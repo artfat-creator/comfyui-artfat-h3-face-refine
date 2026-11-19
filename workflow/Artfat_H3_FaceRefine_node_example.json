@@ -1,0 +1,686 @@
+{
+ "id": "2a69633b-a7c2-434a-a003-de14aebce15a",
+ "revision": 0,
+ "last_node_id": 20,
+ "last_link_id": 6,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "UNETLoader",
+   "pos": [
+    40,
+    40
+   ],
+   "size": [
+    270,
+    82
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "название_unet",
+     "name": "unet_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "unet_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "тип_данных_веса",
+     "name": "weight_dtype",
+     "type": "COMBO",
+     "widget": {
+      "name": "weight_dtype"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "МОДЕЛЬ",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      1
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "UNETLoader"
+   },
+   "widgets_values": [
+    "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+    "default"
+   ],
+   "widgets_values_named": {
+    "unet_name": "MINIMAX\\10Eros_Max_SingularityV2_PRISM2_PikaFlex_0.85_int8HQ.safetensors",
+    "weight_dtype": "default"
+   }
+  },
+  {
+   "id": 2,
+   "type": "MiniMaxH3SigmaShift",
+   "pos": [
+    40,
+    200
+   ],
+   "size": [
+    270,
+    82
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 1
+    },
+    {
+     "localized_name": "shift_video",
+     "name": "shift_video",
+     "type": "FLOAT",
+     "widget": {
+      "name": "shift_video"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "shift_audio",
+     "name": "shift_audio",
+     "type": "FLOAT",
+     "widget": {
+      "name": "shift_audio"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "МОДЕЛЬ",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      3
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "MiniMaxH3SigmaShift"
+   },
+   "widgets_values": [
+    12,
+    3
+   ],
+   "widgets_values_named": {
+    "shift_video": 12,
+    "shift_audio": 3
+   }
+  },
+  {
+   "id": 3,
+   "type": "VAELoader",
+   "pos": [
+    40,
+    330
+   ],
+   "size": [
+    270,
+    58
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "название_vae",
+     "name": "vae_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "vae_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "VAE",
+     "name": "VAE",
+     "type": "VAE",
+     "links": [
+      4
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "VAELoader"
+   },
+   "widgets_values": [
+    "minimax_h3_video_vae_fp16.safetensors"
+   ],
+   "widgets_values_named": {
+    "vae_name": "MINIMAX\\minimax_h3_lynnreal_light_vae_int8_convrot.safetensors"
+   }
+  },
+  {
+   "id": 4,
+   "type": "VAELoader",
+   "pos": [
+    40,
+    450
+   ],
+   "size": [
+    270,
+    58
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "название_vae",
+     "name": "vae_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "vae_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "VAE",
+     "name": "VAE",
+     "type": "VAE",
+     "links": [
+      5
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "VAELoader"
+   },
+   "widgets_values": [
+    "minimax_h3_audio_vae_fp32.safetensors"
+   ],
+   "widgets_values_named": {
+    "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+   }
+  },
+  {
+   "id": 5,
+   "type": "LoadImage",
+   "pos": [
+    40,
+    600
+   ],
+   "size": [
+    309.06640625,
+    314
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "изображение",
+     "name": "image",
+     "type": "COMBO",
+     "widget": {
+      "name": "image"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "выберите файл для загрузки",
+     "name": "upload",
+     "type": "IMAGEUPLOAD",
+     "widget": {
+      "name": "upload"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "ИЗОБРАЖЕНИЕ",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      6
+     ]
+    },
+    {
+     "localized_name": "МАСКА",
+     "name": "MASK",
+     "type": "MASK",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "LoadImage"
+   },
+   "widgets_values": [
+    "face.png",
+    "image"
+   ],
+   "widgets_values_named": {
+    "image": "fr_julia_face.png",
+    "upload": "image"
+   }
+  },
+  {
+   "id": 6,
+   "type": "LoadVideo",
+   "pos": [
+    40,
+    980
+   ],
+   "size": [
+    309.06640625,
+    611.5067934782609
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "файл",
+     "name": "file",
+     "type": "COMBO",
+     "widget": {
+      "name": "file"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "выберите файл для загрузки",
+     "name": "upload",
+     "type": "IMAGEUPLOAD",
+     "widget": {
+      "name": "upload"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "ВИДЕО",
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "links": [
+      2
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "LoadVideo"
+   },
+   "widgets_values": [
+    "your_h3_video.mp4",
+    "image"
+   ],
+   "widgets_values_named": {
+    "file": "face_refine_example_julia_talk.mp4",
+    "upload": "image"
+   }
+  },
+  {
+   "id": 10,
+   "type": "ArtfatH3FaceRefine",
+   "pos": [
+    480,
+    40
+   ],
+   "size": [
+    560,
+    1000
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 3
+    },
+    {
+     "localized_name": "vae",
+     "name": "vae",
+     "type": "VAE",
+     "link": 4
+    },
+    {
+     "localized_name": "audio_vae",
+     "name": "audio_vae",
+     "type": "VAE",
+     "link": 5
+    },
+    {
+     "localized_name": "video",
+     "name": "video",
+     "shape": 7,
+     "type": "VIDEO",
+     "link": 2
+    },
+    {
+     "localized_name": "face_ref",
+     "name": "face_ref",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": 6
+    },
+    {
+     "localized_name": "video_path",
+     "name": "video_path",
+     "type": "STRING",
+     "widget": {
+      "name": "video_path"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "text_encoder",
+     "name": "text_encoder",
+     "type": "COMBO",
+     "widget": {
+      "name": "text_encoder"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "sam3_checkpoint",
+     "name": "sam3_checkpoint",
+     "type": "COMBO",
+     "widget": {
+      "name": "sam3_checkpoint"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "prompt",
+     "name": "prompt",
+     "type": "STRING",
+     "widget": {
+      "name": "prompt"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "denoise",
+     "name": "denoise",
+     "type": "FLOAT",
+     "widget": {
+      "name": "denoise"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "sampler_name",
+     "name": "sampler_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "sampler_name"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "scheduler",
+     "name": "scheduler",
+     "type": "COMBO",
+     "widget": {
+      "name": "scheduler"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "steps",
+     "name": "steps",
+     "type": "INT",
+     "widget": {
+      "name": "steps"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "seed",
+     "name": "seed",
+     "type": "INT",
+     "widget": {
+      "name": "seed"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "sam_threshold",
+     "name": "sam_threshold",
+     "type": "FLOAT",
+     "widget": {
+      "name": "sam_threshold"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "vosr_polish",
+     "name": "vosr_polish",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "vosr_polish"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "tone_match",
+     "name": "tone_match",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "tone_match"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "chunk_frames",
+     "name": "chunk_frames",
+     "type": "INT",
+     "widget": {
+      "name": "chunk_frames"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "overlap_frames",
+     "name": "overlap_frames",
+     "type": "INT",
+     "widget": {
+      "name": "overlap_frames"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "filename_prefix",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "video_path",
+     "name": "video_path",
+     "type": "STRING",
+     "links": null
+    },
+    {
+     "localized_name": "report",
+     "name": "report",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfyui_fearnworksnodes",
+    "ver": "0.1.2",
+    "Node name for S&R": "ArtfatH3FaceRefine"
+   },
+   "widgets_values": [
+    "",
+    "qwen3vl_32b_minimax_h3-Q4_K_M.gguf",
+    "sam3.1_multiplex_fp16.safetensors",
+    "subject_definitions:\n<Subject 1> is the woman with the face from <Picture 1>.\nsummary:\n[Reference-to-video] Close view of her face while she tells a short funny story and bursts out laughing.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, eyes, lips, hair of <Picture 1>.\ndetailed_description:\n[Shot 1] Her face exactly as in <Picture 1>, sharp natural eyes, lashes and lips, real skin with pores, natural afternoon daylight. <Subject 1> (S1) looks into the camera, raises her eyebrows in disbelief and physically speaks: <d>[English] Okay, so I just saw my ex at the cafe, and he was wearing my hoodie!</d> Right after the line she bursts out laughing, her eyes squint, she shakes her head and laughs openly with her mouth wide, then smiles. Her head movement exactly as in the input clip. [Static shot]\noverall_soundscape:\nHer voice is clear and close, then her real laughter.\nnon_diegetic_music:\nN/A\n",
+    0.5,
+    "uni_pc",
+    "beta",
+    8,
+    42,
+    "randomize",
+    0.15,
+    true,
+    true,
+    145,
+    24,
+    "FaceRefine/refined"
+   ],
+   "widgets_values_named": {
+    "video_path": "",
+    "text_encoder": "qwen3vl_32b_minimax_h3-Q4_K_M.gguf",
+    "sam3_checkpoint": "sam3.1_multiplex_fp16.safetensors",
+    "prompt": "subject_definitions:\n<Subject 1> is the woman with the face from <Picture 1>.\nsummary:\n[Reference-to-video] Close view of her face while she tells a short funny story and bursts out laughing.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, eyes, lips, hair of <Picture 1>.\ndetailed_description:\n[Shot 1] Her face exactly as in <Picture 1>, sharp natural eyes, lashes and lips, real skin with pores, natural afternoon daylight. <Subject 1> (S1) looks into the camera, raises her eyebrows in disbelief and physically speaks: <d>[English] Okay, so I just saw my ex at the cafe, and he was wearing my hoodie!</d> Right after the line she bursts out laughing, her eyes squint, she shakes her head and laughs openly with her mouth wide, then smiles. Her head movement exactly as in the input clip. [Static shot]\noverall_soundscape:\nHer voice is clear and close, then her real laughter.\nnon_diegetic_music:\nN/A\n",
+    "denoise": 0.5,
+    "sampler_name": "uni_pc",
+    "scheduler": "beta",
+    "steps": 8,
+    "seed": 42,
+    "control_after_generate": "randomize",
+    "sam_threshold": 0.15,
+    "vosr_polish": true,
+    "tone_match": true,
+    "chunk_frames": 145,
+    "overlap_frames": 24,
+    "filename_prefix": "FaceRefine/refined"
+   }
+  },
+  {
+   "id": 20,
+   "type": "MarkdownNote",
+   "pos": [
+    1080,
+    40
+   ],
+   "size": [
+    640,
+    860
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "## Artfat H3 Face Refine (chunked) - example\nSharpens small / far faces in a finished **MiniMax H3** video and keeps lip-sync, expression and skin tone.\n\n**Connect**\n- **video**: Load Video (pick or upload your finished mp4). Its audio is kept and guides the mouth. *(video_path is only a fallback when this is not connected.)*\n- **model**: the H3 model you generated the video with, with *MiniMaxH3SigmaShift 12/3*.\n- **vae / audio_vae**: H3 video and audio VAE.\n- **face_ref** (optional): a picture of the person's face. Empty = the face from the first frame.\n\n**Prompt = only the face.** The model sees only the face crop, so write the expression from your shot prompt: eyes, brows, mouth, the spoken line, laughter. Nothing about body, clothes or scene. Example:\n> <Subject 1> (S1) looks into the camera, raises her eyebrows in disbelief and physically speaks: <d>[English] ...your line...</d> Right after the line she bursts out laughing, her eyes squint, then smiles.\n\nA generic prompt still works, but it smooths expressions the shot asked for (raised / knitted brows).\n\n**Defaults that tested best**\n- denoise 0.5 (lower keeps the expression closer, higher redraws more)\n- sampler uni_pc, beta, 8 steps\n- SAM3 threshold 0.15 (higher loses the face on some frames -> jiggle)\n- VOSR2 polish on, tone match on\n- chunk 145 frames: long videos run in chunks, memory does not grow with length\n\n**Needs**: ComfyUI-H3-FaceRefine (Carasibana), MaskVidExperiments, ComfyUI_LC_MaskMaker_nodes (VOSR2), ComfyUI-GGUF, SAM 3.1 checkpoint.\n\nFree & open source (GPL-3). Output: output/FaceRefine/."
+   ]
+  }
+ ],
+ "links": [
+  [
+   1,
+   1,
+   0,
+   2,
+   0,
+   "MODEL"
+  ],
+  [
+   2,
+   6,
+   0,
+   10,
+   3,
+   "VIDEO"
+  ],
+  [
+   3,
+   2,
+   0,
+   10,
+   0,
+   "MODEL"
+  ],
+  [
+   4,
+   3,
+   0,
+   10,
+   1,
+   "VAE"
+  ],
+  [
+   5,
+   4,
+   0,
+   10,
+   2,
+   "VAE"
+  ],
+  [
+   6,
+   5,
+   0,
+   10,
+   4,
+   "IMAGE"
+  ]
+ ],
+ "groups": [],
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 1,
+   "offset": [
+    0,
+    0
+   ]
+  },
+  "anomalous_hashes": {
+   "1_MINIMAX\\10Eros_Max_SingularityV2_PRISM2_PikaFlex_0.85_int8HQ.safetensors": {
+    "hash": "",
+    "size": 20197393008
+   },
+   "3_MINIMAX\\minimax_h3_lynnreal_light_vae_int8_convrot.safetensors": {
+    "hash": "",
+    "size": 2137493384
+   },
+   "4_minimax_h3_audio_vae_fp32.safetensors": {
+    "hash": "",
+    "size": 605254869
+   },
+   "10_sam3.1_multiplex_fp16.safetensors": {
+    "hash": "",
+    "size": 1745546848
+   }
+  }
+ },
+ "version": 0.4
+}

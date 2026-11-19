@@ -1,0 +1,12 @@
+subject_definitions:
+<Subject 1> is the woman with the face from <Picture 1>.
+summary:
+[Reference-to-video] Close view of her face while she tells a short funny story and bursts out laughing.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - her face, eyes, lips, hair of <Picture 1>.
+detailed_description:
+[Shot 1] Her face exactly as in <Picture 1>, sharp natural eyes, lashes and lips, real skin with pores, natural afternoon daylight. <Subject 1> (S1) looks into the camera, raises her eyebrows in disbelief and physically speaks: <d>[English] Okay, so I just saw my ex at the cafe, and he was wearing my hoodie!</d> Right after the line she bursts out laughing, her eyes squint, she shakes her head and laughs openly with her mouth wide, then smiles. Her head movement exactly as in the input clip. [Static shot]
+overall_soundscape:
+Her voice is clear and close, then her real laughter.
+non_diegetic_music:
+N/A

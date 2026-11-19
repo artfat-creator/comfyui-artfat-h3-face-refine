@@ -1,0 +1,12 @@
+subject_definitions:
+<Subject 1> is the woman with the face from <Picture 1>.
+summary:
+[Reference-to-video] Close view of her face while she walks along a sunny city street, talks and laughs.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - her face, eyes, lips, hair of <Picture 1>.
+detailed_description:
+[Shot 1] Her face exactly as in <Picture 1>, sharp natural eyes, lashes and lips, real skin with pores, natural afternoon daylight. She keeps walking, talking and laughing, her expression and head movement exactly as in the input clip. [Static shot]
+overall_soundscape:
+City street ambience.
+non_diegetic_music:
+N/A
