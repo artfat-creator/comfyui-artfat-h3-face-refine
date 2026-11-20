@@ -39,6 +39,46 @@ Examples (head crop and full frame, with sound) are in [`examples/`](examples):
 | [04_julia_mimic_prompt](examples/04_julia_mimic_prompt) | raw · graph · node with a generic prompt · node with an expression prompt |
 | [05_sampler_sweep](examples/05_sampler_sweep) | raw · euler · deis · res_multistep · uni_pc · lcm |
 
+## Video examples (with sound)
+
+Each video plays the same clip side by side: **raw H3 output → refined**.
+
+### Mina, talking — head crop (raw · 35-node graph · node)
+
+https://github.com/user-attachments/assets/9a66d3db-552c-4d71-9945-b8429f462921
+
+### Mina, talking — full frame
+
+https://github.com/user-attachments/assets/183f844a-1ca0-4402-a485-5491b80cd630
+
+### Julia, talking — head crop (raw · 35-node graph · node)
+
+https://github.com/user-attachments/assets/38d3edb6-260f-41f7-9088-9eb65f8696e8
+
+### Julia, talking — full frame
+
+https://github.com/user-attachments/assets/51ef9f66-3f57-4305-bb9a-d5d029c905df
+
+### Blanca, talking, face 33–128 px — head crop (raw · node)
+
+https://github.com/user-attachments/assets/06b32031-5bd8-4637-b2c8-775f033b9084
+
+### Blanca — full frame
+
+https://github.com/user-attachments/assets/1bdea8d8-709f-4103-a255-7f1db2a7a1ec
+
+### Julia, expression prompt — head crop (raw · graph · generic prompt · expression prompt)
+
+https://github.com/user-attachments/assets/7b891691-b829-486f-bcf4-f47d1f69bf46
+
+### Julia, expression prompt — full frame
+
+https://github.com/user-attachments/assets/907c0546-e099-46f7-9161-5ab251a1f856
+
+### Sampler sweep — head crop (raw · euler · deis · res_multistep · uni_pc · lcm)
+
+https://github.com/user-attachments/assets/08f21f26-190c-4970-b05f-4f454a9444b2
+
 ## Installation
 
 1. **Install this node** in `ComfyUI/custom_nodes`:
