@@ -111,7 +111,7 @@ https://github.com/user-attachments/assets/08f21f26-190c-4970-b05f-4f454a9444b2
 
 ## Quick start
 
-Open [`workflow/Artfat_H3_FaceRefine_node_example.json`](workflow/Artfat_H3_FaceRefine_node_example.json) in ComfyUI (drag and drop). It has seven nodes and a note:
+Open [`workflow/Artfat_H3_FaceRefine_node_example.json`](workflow/Artfat_H3_FaceRefine_node_example.json) in ComfyUI (drag and drop). It has eight nodes and a note:
 
 ![example workflow](workflow/screenshot_example_workflow.png)
 
@@ -120,6 +120,7 @@ Open [`workflow/Artfat_H3_FaceRefine_node_example.json`](workflow/Artfat_H3_Face
 - **Load VAE ×2**: H3 video VAE and audio VAE.
 - **Load Image** (optional): a picture of the person's face. Leave it out to use the face from the first frame.
 - **Artfat H3 Face Refine**: write the prompt (see below) and run.
+- **Save Video**: plays the finished video at the end of the graph (saves one more copy as `FaceRefine/final_*`; delete it if you do not need the copy).
 
 **Where the result goes:** `ComfyUI/output/FaceRefine/refined_00001.mp4` (then `_00002`, ...), with the original audio. The node shows a preview of the finished video and the saved path, and has a `video` output for Save Video / Preview nodes. Change the folder and name with `filename_prefix`.
 
