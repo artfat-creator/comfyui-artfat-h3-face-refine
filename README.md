@@ -39,6 +39,10 @@ Examples (head crop and full frame, with sound) are in [`examples/`](examples):
 | [04_julia_mimic_prompt](examples/04_julia_mimic_prompt) | raw · graph · node with a generic prompt · node with an expression prompt |
 | [05_sampler_sweep](examples/05_sampler_sweep) | raw · euler · deis · res_multistep · uni_pc · lcm |
 
+**Full-quality originals** (no re-encode, 736 × 1280, 24 fps, with sound) are in [`examples/full_quality`](examples/full_quality):
+[`raw/`](examples/full_quality/raw) is the H3 render before the node, [`refined/`](examples/full_quality/refined) is the node output with the same file name.
+`04_julia_talk_expression_prompt.mp4` is the same raw clip as `02_julia_talk`, refined with the expression prompt.
+
 ## Video examples (with sound)
 
 Each video plays the same clip side by side: **raw H3 output → refined**.
