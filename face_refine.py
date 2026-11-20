@@ -209,7 +209,7 @@ class ArtfatH3FaceRefine:
                 "tone_match": ("BOOLEAN", {"default": True, "tooltip": "Skin-only tone correction toward the original (the refine pass darkens and cools skin)."}),
                 "chunk_frames": ("INT", {"default": 145, "min": 33, "max": 481, "step": 4, "tooltip": "Frames per chunk (rounded to 1+4k). Memory does not grow with video length."}),
                 "overlap_frames": ("INT", {"default": 24, "min": 0, "max": 96, "step": 4, "tooltip": "Overlap between chunks, cross-faded."}),
-                "filename_prefix": ("STRING", {"default": "FaceRefine/refined"}),
+                "filename_prefix": ("STRING", {"default": "FaceRefine/refined", "tooltip": "Saved to ComfyUI/output/<this>_00001.mp4 (e.g. output/FaceRefine/refined_00001.mp4) with the original audio. The node also previews it."}),
             },
             "optional": {
                 "video": ("VIDEO", {"tooltip": "Connect ComfyUI's Load Video node (pick or upload a file). The node only takes the file from it and still reads the video in chunks."}),
@@ -217,8 +217,10 @@ class ArtfatH3FaceRefine:
             },
         }
 
-    RETURN_TYPES = ("STRING", "STRING")
-    RETURN_NAMES = ("video_path", "report")
+    RETURN_TYPES = ("STRING", "STRING", "VIDEO")
+    RETURN_NAMES = ("video_path", "report", "video")
+    OUTPUT_TOOLTIPS = ("Where the result was saved: ComfyUI/output/<filename_prefix>_00001.mp4",
+                       "Log: chunks, mask gaps filled, time.", "The result as a VIDEO, e.g. for Save Video / Preview.")
     FUNCTION = "run"
     OUTPUT_NODE = True
     CATEGORY = "Artfat/H3"
@@ -252,7 +254,7 @@ class ArtfatH3FaceRefine:
         out_path = os.path.join(full_dir, f"{stem}_{k:05d}.mp4")
         ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
                                "-r", f"{fps}", "-i", "-", "-i", video_path, "-map", "0:v", "-map", "1:a?",
-                               "-c:v", "libx264", "-crf", "16", "-pix_fmt", "yuv420p", "-c:a", "copy", "-shortest", out_path],
+                               "-c:v", "libx264", "-crf", "16", "-pix_fmt", "yuv420p", "-c:a", "copy", "-t", f"{total / fps:.3f}", out_path],
                               stdin=subprocess.PIPE)
 
         def emit(frames_u8):
@@ -389,8 +391,16 @@ class ArtfatH3FaceRefine:
         print("[ArtfatFaceRefine] " + log[-1])
         rel = os.path.relpath(out_path, out_dir)
         sub, fname = os.path.split(rel)
-        return {"ui": {"gifs": [{"filename": fname, "subfolder": sub, "type": "output", "format": "video/h264-mp4"}]},
-                "result": (out_path, "\n".join(log))}
+        video_out = None
+        try:
+            from comfy_api.latest import InputImpl
+            video_out = InputImpl.VideoFromFile(out_path)
+        except Exception:
+            pass
+        # core video preview on the node (same format as Save Video) + the saved path as text
+        return {"ui": {"images": [{"filename": fname, "subfolder": sub, "type": "output"}], "animated": (True,),
+                       "text": [out_path]},
+                "result": (out_path, "\n".join(log), video_out)}
 
 
 NODE_CLASS_MAPPINGS = {"ArtfatH3FaceRefine": ArtfatH3FaceRefine}

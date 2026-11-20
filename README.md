@@ -44,7 +44,7 @@ Examples (head crop and full frame, with sound) are in [`examples/`](examples):
 1. **Install this node** in `ComfyUI/custom_nodes`:
    ```
    cd ComfyUI/custom_nodes
-   git clone https://github.com/<owner>/comfyui-artfat-h3-face-refine
+   git clone https://github.com/artfat-creator/comfyui-artfat-h3-face-refine
    ```
 2. **Required node packs** (install with ComfyUI-Manager or `git clone` into `custom_nodes`):
    - [ComfyUI-H3-FaceRefine](https://github.com/Carasibana/ComfyUI-H3-FaceRefine) — face tracking, crop and stitch.
@@ -75,9 +75,11 @@ Open [`workflow/Artfat_H3_FaceRefine_node_example.json`](workflow/Artfat_H3_Face
 - **Load Diffusion Model + MiniMaxH3SigmaShift 12/3**: the same H3 model you generated the video with.
 - **Load VAE ×2**: H3 video VAE and audio VAE.
 - **Load Image** (optional): a picture of the person's face. Leave it out to use the face from the first frame.
-- **Artfat H3 Face Refine**: write the prompt (see below) and run. The result is saved to `output/FaceRefine/`.
+- **Artfat H3 Face Refine**: write the prompt (see below) and run.
 
-We tested with a Pika Flex merge of H3 (`10Eros_Max_SingularityV2_PRISM2_PikaFlex_0.85`) and the light int8 VAE; the official files above work the same way.
+**Where the result goes:** `ComfyUI/output/FaceRefine/refined_00001.mp4` (then `_00002`, ...), with the original audio. The node shows a preview of the finished video and the saved path, and has a `video` output for Save Video / Preview nodes. Change the folder and name with `filename_prefix`.
+
+All our tests used a Pika Flex merge of H3 (`10Eros_Max_SingularityV2_PRISM2_PikaFlex_0.85`) and a light int8 video VAE. We have not run the official files listed above through this node yet; pick the H3 model you generated your video with.
 
 ## The prompt: describe only the face
 
